@@ -25,7 +25,7 @@ RUN ls
 # Install further packages using zypper
 WORKDIR /opt
 RUN ls
-RUN apk add gcc git tar xz wget file cmake make
+RUN apk add build-base gcc git tar xz wget file cmake make
 
 RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang-10.0.0.src.tar.xz
 # RUN tar -xf clang-10.0.0.src.tar.xz
