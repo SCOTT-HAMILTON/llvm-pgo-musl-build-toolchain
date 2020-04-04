@@ -25,7 +25,9 @@ RUN ls
 # Install further packages using zypper
 WORKDIR /opt
 RUN ls
-# RUN zypper install -y gcc10 git tar xz
+RUN apk install gcc git tar xz wget
+
+RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang-10.0.0.src.tar.xz
 # RUN tar -xf clang-10.0.0.src.tar.xz
 RUN ls
 # RUN cd clang-10.0.0
