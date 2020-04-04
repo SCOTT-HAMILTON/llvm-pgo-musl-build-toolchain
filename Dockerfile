@@ -2,11 +2,12 @@
 #!BuildTag: my_container
 
 # FROM opensuse/tumbleweed
-FROM suse/sle15:current
+FROM alpine:3.7
 
 
 # Work around https://github.com/openSUSE/obs-build/issues/487
-RUN zypper install -y openSUSE-release-appliance-docker
+RUN apk update
+# RUN zypper install -y openSUSE-release-appliance-docker
 RUN ls
 
 #USER wwwrun
@@ -24,7 +25,7 @@ RUN ls
 # Install further packages using zypper
 WORKDIR /opt
 RUN ls
-RUN zypper install -y gcc10 git tar xz
+# RUN zypper install -y gcc10 git tar xz
 # RUN tar -xf clang-10.0.0.src.tar.xz
 RUN ls
 # RUN cd clang-10.0.0
