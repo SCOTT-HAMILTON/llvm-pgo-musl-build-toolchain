@@ -27,23 +27,20 @@ WORKDIR /opt
 RUN ls
 RUN apk add build-base gcc git tar xz wget file cmake make
 
-RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang-10.0.0.src.tar.xz
-# RUN tar -xf clang-10.0.0.src.tar.xz
+RUN git clone https://github.com/llvm/llvm-project.git
+
 RUN ls
 # RUN cd clang-10.0.0
-RUN tar -xf clang-10.0.0.src.tar.xz
-RUN ls
-RUN file clang-10.0.0.src
-RUN ls clang-10.0.0.src
-WORKDIR /opt/clang-10.0.0.src
+WORKDIR /opt/llvm-project
 RUN mkdir build
-WORKDIR /opt/clang-10.0.0.src/build
-RUN cmake .. \
-	-DCMAKE_C_COMPILER=gcc \
-	-DCMAKE_CXX_COMPILER=g++ \
-	-DCMAKE_MAKE_PROGRAM=make \
+WORKDIR /opt/llvm-project/build
+RUN cmake \
+	-DLLVM_ENABLE_PROJECTS=clang \
+	-G "Unix Makefiles" \
+	../llvm \
 	-L
 
-RUN ls /opt/clang-10.0.0.src/build
+RUN ls /opt/llvm-project/build
+
 # This command will get executed on container start on by default
 CMD /bin/sh -c
