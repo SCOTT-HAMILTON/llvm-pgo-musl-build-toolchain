@@ -2,11 +2,22 @@
 #!BuildTag: my_container
 
 # FROM opensuse/tumbleweed
-FROM alpine:3.7
+FROM alpine:latest
 
 
 # Work around https://github.com/openSUSE/obs-build/issues/487
 RUN apk update
+
+
+RUN apk add sed
+# add edge repo
+RUN sed -i -e 's/v[[:digit:]]\..*\//edge\//g' /etc/apk/repositories
+RUN apk upgrade --update-cache --available
+RUN cat /etc/alpine-release
+
+# alpine is cleaned, newest
+
+
 # RUN zypper install -y openSUSE-release-appliance-docker
 RUN ls
 
@@ -25,7 +36,7 @@ RUN ls
 # Install further packages using zypper
 WORKDIR /opt
 RUN ls
-RUN apk add build-base gcc git tar xz wget file cmake make z3
+RUN apk add build-base gcc git tar xz wget file cmake make zlib-dev
 
 RUN git clone https://github.com/llvm/llvm-project.git
 
