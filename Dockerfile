@@ -33,5 +33,7 @@ RUN ls
 # RUN cd clang-10.0.0
 RUN tar -xf clang-10.0.0.src.tar.xz
 RUN ls
+RUN cd clang-10.0.0.src
+RUN ls
 # This command will get executed on container start by default
 CMD /bin/sh -c
