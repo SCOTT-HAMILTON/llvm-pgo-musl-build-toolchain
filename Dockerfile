@@ -25,7 +25,7 @@ RUN ls
 # Install further packages using zypper
 WORKDIR /opt
 RUN ls
-RUN apk add gcc git tar xz wget file
+RUN apk add gcc git tar xz wget file cmake
 
 RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang-10.0.0.src.tar.xz
 # RUN tar -xf clang-10.0.0.src.tar.xz
@@ -35,5 +35,9 @@ RUN tar -xf clang-10.0.0.src.tar.xz
 RUN ls
 RUN file clang-10.0.0.src
 RUN ls clang-10.0.0.src
+WORKDIR /opt/clang-10.0.0.src
+RUN mkdir build
+WORKDIR /opt/clang-10.0.0.src/build
+RUN cmake .. -L
 # This command will get executed on container start on by default
 CMD /bin/sh -c
