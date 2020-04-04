@@ -35,5 +35,5 @@ RUN tar -xf clang-10.0.0.src.tar.xz
 RUN ls
 WORKDIR clang-10.0.0.src
 RUN ls
-# This command will get executed on container start by default
+# This command will get executed on container start on by default
 CMD /bin/sh -c
