@@ -31,7 +31,7 @@ RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/c
 # RUN tar -xf clang-10.0.0.src.tar.xz
 RUN ls
 # RUN cd clang-10.0.0
-
-
+RUN tar -xf clang-10.0.0.src.tar.xz
+RUN ls
 # This command will get executed on container start by default
 CMD /bin/sh -c
