@@ -36,7 +36,8 @@ RUN ls
 # Install further packages using zypper
 WORKDIR /opt
 RUN ls
-RUN apk add build-base gcc git tar xz wget file cmake make z3-dev libxml2-dev
+RUN apk add build-base gcc git tar xz wget file cmake make z3-dev libxml2-dev \
+	ocaml-dev
 
 RUN git clone https://github.com/llvm/llvm-project.git
 
