@@ -47,7 +47,9 @@ WORKDIR /opt/llvm-project
 RUN mkdir build
 WORKDIR /opt/llvm-project/build
 RUN cmake \
+	-DCMAKE_BUILD_TYPE=Release \
 	-DLLVM_ENABLE_PROJECTS=clang \
+	-DLLVM_INCLUDE_TESTS=OFF \
 	-G "Unix Makefiles" \
 	../llvm \
 	-L
