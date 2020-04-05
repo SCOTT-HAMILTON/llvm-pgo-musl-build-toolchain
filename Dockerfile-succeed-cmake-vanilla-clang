@@ -56,9 +56,5 @@ RUN cmake \
 
 RUN ls /opt/llvm-project/build
 
-RUN make
-
-RUN ls /opt/llvm-project/build
-
 # This command will get executed on container start on by default
 CMD /bin/sh -c
